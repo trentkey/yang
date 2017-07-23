@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title>Sample "Hello, World" Application</title>
+  </head>
+    
+    
+  <body bgcolor=white>
+      
+
+    <div id="flat"></div>
+
+
+
+  </body>
+    
+    
+    
+    <style>
+    
+    html { height: 100%; width: 100% }
+body { height: 100%; width: 100% }
+#flat { 
+    height: 20%; 
+    width: 20%;
+    position: absolute; 
+    top: 45%;
+    left: 45%;
+    background-image: url(img/Asset%201.svg);
+    background-repeat: no-repeat;
+}
+    </style>
+    
+    
+    <script type="application/javascript">
+    
+    var flat = document.getElementById("flat"),
+    flatStyle = flat.style,
+    _transform = "WebkitTransform" in flatStyle ? "WebkitTransform" :
+        "MozTransform" in flatStyle ? "MozTransform" :
+            "msTransform" in flatStyle ? "msTransform" : false;
+
+_transform && window.addEventListener("deviceorientation", function(e) {
+    flatStyle[_transform] = "perspective(500px) rotateY("+(-e.gamma)+"deg) rotateX("+e.beta+"deg) rotateZ("+-(e.alpha-180)+"deg)";
+});
+
+    
+    </script>
+    
+</html>
